@@ -18,6 +18,9 @@ https://github.com/bensuperpc/docker_from_scratch.git
 ```sh
 cd docker_from_scratch
 ```
+
+Change USER variable in makefile to your name if you want to acces to build without root.
+
 ##### and some package:
 ```sh
 docker debootstrap debian-archive-keyring ubuntu-keyring archlinux-keyring xz-utils tar wget curl make rsync (maybe others ?)
@@ -44,6 +47,12 @@ sudo make v3.14 or sudo make alpine
 
 ```sh
 sudo make archlinux
+```
+
+##### _Clean build_
+
+```sh
+sudo make clean
 ```
 
 ### Todos
