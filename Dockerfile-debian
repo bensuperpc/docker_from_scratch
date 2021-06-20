@@ -1,0 +1,25 @@
+FROM alpine:3.13 AS verify
+
+RUN apk add --no-cache bash tar xz
+ARG ROOTFS=rootfs.tar.xz
+
+COPY ${ROOTFS} ./${ROOTFS}
+RUN mkdir -p /rootfs
+RUN tar -xf ${ROOTFS} -C /rootfs
+
+FROM scratch AS test
+COPY --from=verify /rootfs/ /
+RUN ldconfig
+
+RUN apt-get update && apt-get dist-upgrade -y \
+    && apt-get install -y hello \
+    && hello \
+    && apt-get purge hello -y
+
+FROM scratch AS root
+COPY --from=verify /rootfs/ /
+RUN ldconfig
+
+ENV LANG=en_US.UTF-8
+CMD ["/usr/bin/bash"]
+
