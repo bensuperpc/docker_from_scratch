@@ -27,6 +27,7 @@ docker debootstrap debian-archive-keyring ubuntu-keyring archlinux-keyring xz-ut
 ```
 
 #### Usage
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Warning: this git repository is for educational purposes, these images are not very optimized and do not have optimal security (as the root user has the password "root" ...)`
 ##### _Build ubuntu focal (20.04)_
 
 ```sh
